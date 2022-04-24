@@ -1,0 +1,29 @@
+.container2 {
+    display: flex;
+    margin-top: 100px;
+    height: 82vh;
+    margin-bottom: 100px;
+    overflow-y: scroll;
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addContainer {
+    margin-top: 40px;
+    margin-bottom: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+}
+
+.footerCon {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.container2::-webkit-scrollbar {
+    width: 12px;
+}
