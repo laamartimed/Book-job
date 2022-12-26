@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-//const url_db = 'mongodb+srv://mrabet:hamada321@cluster0.9i257.mongodb.net/gestion?retryWrites=true&w=majority';
-
 module.exports = () => {
 	const connectionParams = {
 		useNewUrlParser: true,

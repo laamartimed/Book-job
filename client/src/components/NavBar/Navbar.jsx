@@ -14,11 +14,12 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
 	const handleLogout = () => {
 		localStorage.removeItem("token");
-		document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+		localStorage.removeItem("role");
 		window.location.reload();
 	};
 
 	const [anchorElNav, setAnchorElNav] = React.useState(null);
+	const role = localStorage.getItem("role");
   
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -72,17 +73,26 @@ const NavBar = () => {
 									display: { xs: "block", md: "none" }
 								}}
 							>
-								<Link to="/" style={{ textDecoration: 'none' }}>
-									<MenuItem onClick={handleCloseNavMenu}>
-										<Typography textAlign="center">Entreprises</Typography>
-									</MenuItem>
-                                </Link>
+								{
+									role === 'admin' ?
+										<>
+											<Link to="/" style={{ textDecoration: 'none' }}>
+												<MenuItem onClick={handleCloseNavMenu}>
+													<Typography textAlign="center">Entreprises</Typography>
+												</MenuItem>
+											</Link>
 
-								<Link to="/add-entreprise" style={{ textDecoration: 'none' }}>
+											<Link to="/add-entreprise" style={{ textDecoration: 'none' }}>
+												<MenuItem onClick={handleCloseNavMenu} >
+													<Typography textAlign="center">Add Entreprises</Typography>
+												</MenuItem>
+											</Link>
+										</>
+									: 
 									<MenuItem onClick={handleCloseNavMenu} >
-										<Typography textAlign="center">Add Entreprises</Typography>
+										<Typography textAlign="center">Map Entreprises</Typography>
 									</MenuItem>
-								</Link>
+								}
 							</Menu>
 						</Box>
 						<Typography
@@ -94,21 +104,35 @@ const NavBar = () => {
 							ESISA
 						</Typography>
 						<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-							<Link to="/" style={{ textDecoration: 'none' }}>
-								<Button
-									sx={{ my: 2, color: "white", display: "block" }}
-								>
-									Entreprises
-								</Button>
-                            </Link>
-                            
-							<Link to="/add-entreprise" style={{ textDecoration: 'none' }}>
-								<Button
-									sx={{ my: 2, color: "white", display: "block" }}
-								>
-									Add Entreprises
-								</Button>
-							</Link>		
+							{
+								role === 'admin' ?
+								<>
+									<Link to="/" style={{ textDecoration: 'none' }}>
+										<Button
+											sx={{ my: 2, color: "white", display: "block" }}
+										>
+											Entreprises
+										</Button>
+									</Link>
+									
+									<Link to="/add-entreprise/-1" style={{ textDecoration: 'none' }}>
+										<Button
+											sx={{ my: 2, color: "white", display: "block" }}
+										>
+											Add Entreprises
+										</Button>
+									</Link>	
+								</>
+								:
+									<Link to='/map' style={{ textDecoration: 'none' }}>
+										<Button
+											sx={{ my: 2, color: "white", display: "block" }}
+										>
+											Map Entreprises
+										</Button>
+									</Link>
+							}
+								
 						</Box>
 
 						<Button color="inherit" onClick={handleLogout}>Logout</Button>

@@ -5,8 +5,8 @@ import styles from "./styles.module.css";
 
 const Signup = () => {
 	const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
+		userName: "",
+		role: "",
 		email: "",
 		password: "",
 	});
@@ -50,19 +50,19 @@ const Signup = () => {
 						<h1>Create Account</h1>
 						<input
 							type="text"
-							placeholder="First Name"
-							name="firstName"
+							placeholder="User Name"
+							name="userName"
 							onChange={handleChange}
-							value={data.firstName}
+							value={data.userName}
 							required
 							className={styles.input}
 						/>
 						<input
 							type="text"
-							placeholder="Last Name"
-							name="lastName"
+							placeholder="role"
+							name="role"
 							onChange={handleChange}
-							value={data.lastName}
+							value={data.role}
 							required
 							className={styles.input}
 						/>

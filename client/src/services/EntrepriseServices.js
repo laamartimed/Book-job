@@ -19,6 +19,10 @@ class EntrepriseService {
     deleteEntreprise(id){
         return axios.delete(ENTREPRISE_API_BASE_URL + '/delete/' + id);
     }
+
+    updateEntreprise(id, entreprise){
+        return axios.put(ENTREPRISE_API_BASE_URL+ '/update/' + id, entreprise);
+    }
 }
 
 export default new EntrepriseService();
